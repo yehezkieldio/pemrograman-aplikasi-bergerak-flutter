@@ -1,4 +1,3 @@
-# yehezkiel_dio_sinolungan
 
 Pemrograman Aplikasi Bergerak
 
