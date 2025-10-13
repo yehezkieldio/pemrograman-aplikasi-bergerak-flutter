@@ -8,16 +8,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static final List<String> names = ['Dio', 'Raihan', 'Adam'];
-  static String getRandomName() {
-    final random = Random();
-    return names[random.nextInt(names.length)];
-  }
-
   @override
   Widget build(BuildContext context) {
-    final randomName = getRandomName();
-
     return MaterialApp(
       title: 'HidupSehat',
       theme: ThemeData(
@@ -41,210 +33,236 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('HidupSehat'),
-          backgroundColor: Colors.lightBlueAccent,
-          centerTitle: true,
-          leading: const Icon(Icons.account_box_sharp, color: Colors.white),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search, color: Colors.white),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(Icons.settings, color: Colors.white),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.lightBlueAccent,
-          child: const Icon(Icons.add, color: Colors.white),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 240.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStatePropertyAll(
-                              Colors.lightBlueAccent,
-                            ),
-                            foregroundColor: WidgetStatePropertyAll(
-                              Colors.white,
-                            ),
-                            shape: WidgetStatePropertyAll(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+      home: const MainScreen(),
+    );
+  }
+}
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+
+  static final List<String> names = ['Dio', 'Raihan', 'Adam'];
+  static String getRandomName() {
+    final random = Random();
+    return names[random.nextInt(names.length)];
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final randomName = getRandomName();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('HidupSehat'),
+        backgroundColor: Colors.lightBlueAccent,
+        centerTitle: true,
+        leading: const Icon(Icons.account_box_sharp, color: Colors.white),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: Colors.white),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings, color: Colors.white),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.lightBlueAccent,
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 240.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(
+                            Colors.lightBlueAccent,
+                          ),
+                          foregroundColor: WidgetStatePropertyAll(Colors.white),
+                          shape: WidgetStatePropertyAll(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
                             ),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.local_hospital),
-                              const Padding(padding: EdgeInsets.all(5)),
-                              Text('Hidup Sehat bersama $randomName'),
-                            ],
-                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.local_hospital),
+                            const Padding(padding: EdgeInsets.all(5)),
+                            Text('Hidup Sehat bersama $randomName'),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  const Padding(padding: EdgeInsets.all(15)),
-                  // ...existing code for all your button rows...
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
-                          foregroundColor: WidgetStatePropertyAll(Colors.white),
+                ),
+                const Padding(padding: EdgeInsets.all(15)),
+                // ...existing code for all your button rows...
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 1'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(Colors.white),
-                          foregroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
-                          side: WidgetStatePropertyAll(
-                            BorderSide(color: Colors.lightBlueAccent, width: 2),
-                          ),
+                      child: const Text('COVID-19'),
+                    ),
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 2'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlue[100]!,
-                          ),
-                          foregroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
+                      child: const Text('Diabetes'),
+                    ),
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 3'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                    ],
-                  ),
-                  const Padding(padding: EdgeInsets.all(20)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(Colors.white),
-                          foregroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
-                          side: WidgetStatePropertyAll(
-                            BorderSide(color: Colors.lightBlueAccent, width: 2),
-                          ),
+                      child: const Text('Hipertensi'),
+                    ),
+                    const Spacer(),
+                  ],
+                ),
+                const Padding(padding: EdgeInsets.all(20)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 4'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
-                          foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      child: const Text('Kesehatan Mental'),
+                    ),
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 5'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlue[100]!,
-                          ),
-                          foregroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
+                      child: const Text('Imunisasi'),
+                    ),
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 6'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                    ],
-                  ),
-                  const Padding(padding: EdgeInsets.all(20)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
-                          foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      child: const Text('Pola Makan Sehat'),
+                    ),
+                    const Spacer(),
+                  ],
+                ),
+                const Padding(padding: EdgeInsets.all(20)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 7'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(Colors.white),
-                          foregroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
-                          side: WidgetStatePropertyAll(
-                            BorderSide(color: Colors.lightBlueAccent, width: 2),
-                          ),
+                      child: const Text('Olahraga Harian'),
+                    ),
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 8'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlue[100]!,
-                          ),
-                          foregroundColor: WidgetStatePropertyAll(
-                            Colors.lightBlueAccent,
-                          ),
+                      child: const Text('Cek Kesehatan Jantung'),
+                    ),
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                          Colors.lightBlueAccent,
                         ),
-                        child: const Text('Button 9'),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
-                      const Spacer(),
-                    ],
-                  ),
-                ],
-              ),
+                      child: const Text('Kesehatan Lansia'),
+                    ),
+                    const Spacer(),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.medical_services),
+            label: 'Konsultasi',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Tips'),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.lightBlueAccent,
+        onTap: _onItemTapped,
       ),
     );
   }
