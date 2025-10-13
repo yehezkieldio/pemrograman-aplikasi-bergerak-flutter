@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -33,37 +32,16 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const MainScreen(),
+      home: Project1(),
     );
   }
 }
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
-
-  static final List<String> names = ['Dio', 'Raihan', 'Adam'];
-  static String getRandomName() {
-    final random = Random();
-    return names[random.nextInt(names.length)];
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class Project1 extends StatelessWidget {
+  const Project1({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final randomName = getRandomName();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('HidupSehat'),
@@ -118,7 +96,7 @@ class _MainScreenState extends State<MainScreen> {
                           children: [
                             const Icon(Icons.local_hospital),
                             const Padding(padding: EdgeInsets.all(5)),
-                            Text('Hidup Sehat bersama $randomName'),
+                            Text('Hidup Sehat bersama Dio'),
                           ],
                         ),
                       ),
@@ -260,9 +238,8 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Tips'),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: 0,
         selectedItemColor: Colors.lightBlueAccent,
-        onTap: _onItemTapped,
       ),
     );
   }
