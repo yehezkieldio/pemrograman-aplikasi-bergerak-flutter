@@ -60,8 +60,19 @@ class _HalamanFalkultasState extends State<HalamanFalkultas> {
                 title: const Text('Fakultas Ekonomi dan Bisnis'),
                 leading: const Icon(Icons.business, color: Colors.black),
                 trailing: const Icon(Icons.arrow_forward, color: Colors.black),
-                onTap: () {
-                  // Aksi ketika ditekan
+                onLongPress: () {
+                  Fakultas fakultas = Fakultas(
+                    namaFakultas: 'Fakultas Ekonomi dan Bisnis',
+                    detailsFakultas:
+                        'Menawarkan program studi yang berfokus pada manajemen bisnis, akuntansi, dan ekonomi.',
+                  );
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FakultasDetails(fakultas: fakultas),
+                    ),
+                  );
                 },
               ),
             ),
@@ -74,8 +85,19 @@ class _HalamanFalkultasState extends State<HalamanFalkultas> {
                   color: Colors.black,
                 ),
                 trailing: const Icon(Icons.arrow_forward, color: Colors.black),
-                onTap: () {
-                  // Aksi ketika ditekan
+                onLongPress: () {
+                  Fakultas fakultas = Fakultas(
+                    namaFakultas: 'Fakultas Humaniora dan Kesehatan',
+                    detailsFakultas:
+                        'Menawarkan program studi yang berfokus pada ilmu sosial, psikologi, dan kesehatan masyarakat.',
+                  );
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FakultasDetails(fakultas: fakultas),
+                    ),
+                  );
                 },
               ),
             ),
@@ -85,8 +107,19 @@ class _HalamanFalkultasState extends State<HalamanFalkultas> {
                 title: const Text('Fakultas Teknik'),
                 leading: const Icon(Icons.construction, color: Colors.black),
                 trailing: const Icon(Icons.arrow_forward, color: Colors.black),
-                onTap: () {
-                  // Aksi ketika ditekan
+                onLongPress: () {
+                  Fakultas fakultas = Fakultas(
+                    namaFakultas: 'Fakultas Teknik',
+                    detailsFakultas:
+                        'Menawarkan program studi yang berfokus pada berbagai cabang teknik seperti teknik sipil, teknik mesin, dan teknik elektro.',
+                  );
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FakultasDetails(fakultas: fakultas),
+                    ),
+                  );
                 },
               ),
             ),
@@ -96,8 +129,19 @@ class _HalamanFalkultasState extends State<HalamanFalkultas> {
                 title: const Text('Fakultas Hukum'),
                 leading: const Icon(Icons.gavel, color: Colors.black),
                 trailing: const Icon(Icons.arrow_forward, color: Colors.black),
-                onTap: () {
-                  // Aksi ketika ditekan
+                onLongPress: () {
+                  Fakultas fakultas = Fakultas(
+                    namaFakultas: 'Fakultas Hukum',
+                    detailsFakultas:
+                        'Menawarkan program studi yang berfokus pada ilmu hukum dan sistem peradilan.',
+                  );
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FakultasDetails(fakultas: fakultas),
+                    ),
+                  );
                 },
               ),
             ),
