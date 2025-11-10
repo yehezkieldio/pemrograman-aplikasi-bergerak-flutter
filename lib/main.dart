@@ -11,28 +11,115 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'HidupSehat',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.lightBlueAccent,
-          brightness: Brightness.light,
-          primary: Colors.lightBlueAccent,
-          secondary: Colors.white,
-          surface: Colors.white,
-        ),
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.lightBlueAccent,
-          foregroundColor: Colors.white,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            backgroundColor: WidgetStatePropertyAll(Colors.lightBlueAccent),
-            foregroundColor: WidgetStatePropertyAll(Colors.white),
-          ),
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Project1()),
+                );
+              },
+              child: Text("Cari Dokter"),
+            ),
+            Padding(padding: const EdgeInsets.symmetric(vertical: 8.0)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Konsultasi()),
+                );
+              },
+              child: Text("Konsultasi"),
+            ),
+            Padding(padding: const EdgeInsets.symmetric(vertical: 8.0)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Artikel()),
+                );
+              },
+              child: Text("Artikel"),
+            ),
+          ],
         ),
       ),
-      debugShowCheckedModeBanner: false,
-      home: Project1(),
+    );
+  }
+}
+
+class CariDokter extends StatelessWidget {
+  const CariDokter({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Cari Dokter', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black,
+      ),
+      backgroundColor: Colors.black,
+      body: const Center(
+        child: Text(
+          'Halaman Cari Dokter',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+
+class Konsultasi extends StatelessWidget {
+  const Konsultasi({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Konsultasi', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black,
+      ),
+      backgroundColor: Colors.black,
+      body: const Center(
+        child: Text(
+          'Halaman Konsultasi',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+
+class Artikel extends StatelessWidget {
+  const Artikel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Artikel', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black,
+      ),
+      backgroundColor: Colors.black,
+      body: const Center(
+        child: Text('Halaman Artikel', style: TextStyle(color: Colors.white)),
+      ),
     );
   }
 }
@@ -54,8 +141,13 @@ class Project1 extends StatelessWidget {
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
-            onPressed: () {},
+            icon: const Icon(Icons.arrow_circle_left, color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Home()),
+              );
+            },
           ),
         ],
       ),
